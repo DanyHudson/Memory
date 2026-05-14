@@ -1,4 +1,4 @@
-export type ThemeId = 'blue' | 'orange';
+export type ThemeId = 'da-projects' | 'foods';
 
 export type CardFace = {
     id: string;
