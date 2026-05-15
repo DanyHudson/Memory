@@ -1,4 +1,18 @@
 body  {
     height: 100vh;
     background-color: rgb(88, 105, 105);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-screen {
+    background-color: azure;
+    height: 500px;
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
