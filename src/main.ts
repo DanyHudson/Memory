@@ -1,5 +1,7 @@
 import './styles/style.scss';
 import type { GameState, PlayerId, SettingsState } from './types/game';
+import { THEMES } from './data/themes';
+import { BOARD_SIZES } from './data/board-sizes';
 import { INITIAL_GAME_STATE } from './state/initial-state';
 
 let gameState: GameState = structuredClone(INITIAL_GAME_STATE);
@@ -49,34 +51,47 @@ function renderSettings(rootElement: HTMLElement) {
 
         <div class="settings-select">
 
-            <fieldset class="settings-item">
+           <!-- <div class="settings-item">
                 <div class="settings-icon-container">
                     <img src="" alt="Colour Palette Icon" class="settings-icon">
                 </div>
                 <div class="settings-options-container">
-                    <legend class="settings-title">Game Themes</legend>
+                    <h2 class="settings-title">Game Themes</h2>
                     <div class="settings-options">
                         <input type="radio" id="da-projects-theme" name="game-theme"> <label for="da-projects-theme">DA Projects Theme</label>
                         <input type="radio" id="foods-theme" name="game-theme"> <label for="foods-theme">Foods Theme</label>
                     </div>
                 </div>
-            </fieldset>
+            </div> -->
+
+              <fieldset class="settings-item">
+              <legend class="settings-title"><img src="" alt="" class="settings-icon">Game Themes</legend>
+                    <div class="settings-option"><input type="radio" id="da-projects-theme" name="game-theme"> <label for="da-projects-theme">DA Projects Theme</label></div>
+                    <div class="settings-option"><input type="radio" id="foods-theme" name="game-theme"> <label for="foods-theme">Foods Theme</label></div>
+              </fieldset> 
 
 
-            <fieldset class="settings-item">
+            <!--<div class="settings-item">
                 <div class="settings-icon-container">
                     <img src="" alt="Player Icon" class="settings-icon">
                 </div>
                 <div class="settings-options-container">
-                    <legend class="settings-title">Player</legend>
+                    <h2 class="settings-title">Player</h2>
                     <div class="settings-options">
                         <input type="radio" id="blue-player" name="player"> <label for="blue-player">Blue Player</label>
                         <input type="radio" id="orange-player" name="player"> <label for="orange-player">Orange Player</label>
                     </div>
                 </div>
-            </fieldset>
+            </div> -->
 
             <fieldset class="settings-item">
+            <legend class="settings-title"><img src="" alt="" class="settings-icon">Player</legend> 
+                    <div class="settings-option"><input type="radio" id="blue-player" name="player"> <label for="blue-player">Blue Player</label></div>
+                    <div class="settings-option"><input type="radio" id="orange-player" name="player"> <label for="orange-player">Orange Player</label></div>
+            </fieldset>
+
+
+           <!-- <fieldset class="settings-item">
                 <div class="settings-icon-container">
                     <img src="" alt="Mobile Icon" class="settings-icon">
                 </div>
@@ -88,6 +103,13 @@ function renderSettings(rootElement: HTMLElement) {
                         <input type="radio" id="36-cards" name="board-size"> <label for="36-cards">36 Cards</label>
                     </div>
                 </div>
+            </fieldset> -->
+
+            <fieldset class="settings-item">
+            <legend class="settings-title"><img src="" alt="" class="settings-icon" style="width: 24px; height: 24px; background-color: rgb(255, 255, 255);">Board Size</legend>          
+                    <div class="settings-option"><input type="radio" id="16-cards" name="board-size"> <label for="16-cards">16 Cards</label></div>
+                    <div class="settings-option"><input type="radio" id="24-cards" name="board-size"> <label for="24-cards">24 Cards</label></div>
+                    <div class="settings-option"><input type="radio" id="36-cards" name="board-size"> <label for="36-cards">36 Cards</label></div>
             </fieldset>
 
         </div>
@@ -114,5 +136,10 @@ function addStartButton(rootElement: HTMLElement) {
     }
 }
 
+function addSettingsListeners(rootElement: HTMLElement) {
+    const themeOptions = rootElement.querySelectorAll<HTMLInputElement>('input[name="game-theme"]');
+    const playerOptions = rootElement.querySelectorAll<HTMLInputElement>('input[name="player"]');
+    const boardSizeOptions = rootElement.querySelectorAll<HTMLInputElement>('input[name="board-size"]');
+} 
 
 render(root);   
