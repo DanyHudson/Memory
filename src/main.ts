@@ -3,12 +3,9 @@ import type { GameState, PlayerId, SettingsState } from './types/game';
 import { THEMES } from './data/themes';
 import { BOARD_SIZES } from './data/board-sizes';
 import { INITIAL_GAME_STATE } from './state/initial-state';
+import { ThemeId } from './types/theme';
 
 let gameState: GameState = structuredClone(INITIAL_GAME_STATE);
-let playerId: PlayerId = 'blue';
-let boardSizeId: number = 16;
-let themeId: string = 'da-projects';
-
 
 // gameState = gameState;
 
@@ -59,28 +56,49 @@ function renderSettings(rootElement: HTMLElement) {
 
             <fieldset class="settings-item">
             <legend class="settings-title"><img src="" alt="" class="settings-icon">Game Themes</legend>
-                    <div class="settings-option"><input type="radio" id="da-projects-theme" name="game-theme"> <label for="da-projects-theme">DA Projects Theme</label></div>
-                    <div class="settings-option"><input type="radio" id="foods-theme" name="game-theme"> <label for="foods-theme">Foods Theme</label></div>
+                    <div class="settings-option">
+                        <input type="radio" id="da-projects-theme" name="game-theme" value="da-projects">
+                        <label for="da-projects-theme">DA Projects Theme</label>
+                    </div>
+                    <div class="settings-option">
+                        <input type="radio" id="foods-theme" name="game-theme" value="foods">
+                        <label for="foods-theme">Foods Theme</label>
+                    </div>
             </fieldset> 
 
             <fieldset class="settings-item">
             <legend class="settings-title"><img src="" alt="" class="settings-icon">Player</legend> 
-                    <div class="settings-option"><input type="radio" id="blue-player" name="player"> <label for="blue-player">Blue Player</label></div>
-                    <div class="settings-option"><input type="radio" id="orange-player" name="player"> <label for="orange-player">Orange Player</label></div>
+                    <div class="settings-option">
+                        <input type="radio" id="blue-player" name="player" value="blue">
+                        <label for="blue-player">Blue Player</label>
+                    </div>
+                    <div class="settings-option">
+                        <input type="radio" id="orange-player" name="player" value="orange">
+                        <label for="orange-player">Orange Player</label>
+                    </div>
             </fieldset>
 
             <fieldset class="settings-item">
             <legend class="settings-title"><img src="" alt="" class="settings-icon">Board Size</legend>          
-                    <div class="settings-option"><input type="radio" id="16-cards" name="board-size"> <label for="16-cards">16 Cards</label></div>
-                    <div class="settings-option"><input type="radio" id="24-cards" name="board-size"> <label for="24-cards">24 Cards</label></div>
-                    <div class="settings-option"><input type="radio" id="36-cards" name="board-size"> <label for="36-cards">36 Cards</label></div>
+                    <div class="settings-option">
+                        <input type="radio" id="16-cards" name="board-size" value="16">
+                        <label for="16-cards">16 Cards</label>
+                    </div>
+                    <div class="settings-option">
+                        <input type="radio" id="24-cards" name="board-size" value="24">
+                        <label for="24-cards">24 Cards</label>
+                    </div>
+                    <div class="settings-option">
+                        <input type="radio" id="36-cards" name="board-size" value="36">
+                        <label for="36-cards">36 Cards</label>
+                    </div>
             </fieldset>
 
         </div>
 
         <div class="settings-visual">
             <div class="visual-shot"><img src="" alt=""></div>
-            <div class="settings-confirmed"> ${themeId} / ${playerId} / ${boardSizeId} </div>
+            <div class="settings-confirmed"> ${themeId} / ${playerId} / ${boardSizeId}  <button><img src="" alt="" style="width: 20px; height: 20px;">Start</button></div>
         </div>
 
     </div>
@@ -91,7 +109,6 @@ function renderSettings(rootElement: HTMLElement) {
     </main>
     `;
 
-    addSettingsListeners(rootElement);
 }
 
 function startGame(rootElement: HTMLElement) {
@@ -113,21 +130,12 @@ function addSettingsListeners(rootElement: HTMLElement) {
 
     themeOptions.forEach((option) => {
         option.addEventListener('change', () => {
-            themeId = option.id;
+            gameState.settings.themeId = option.value as ThemeId;
+            render(rootElement);
         });
     });
 
-    playerOptions.forEach((option) => {
-        option.addEventListener('change', () => {
-            playerId = option.id as PlayerId;
-        });
-    });
-    
-    boardSizeOptions.forEach((option) => {
-        option.addEventListener('change', () => {
-            boardSizeId = parseInt(option.id.split('-')[0]);
-        });
-    });
+ 
 } 
 
 render(root);   
