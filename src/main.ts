@@ -1,9 +1,10 @@
 import './styles/style.scss';
 import type { GameState, PlayerId, SettingsState } from './types/game';
-import { THEMES } from './data/themes';
-import { BOARD_SIZES } from './data/board-sizes';
+// import { THEMES } from './data/themes';
+// import { BOARD_SIZES } from './data/board-sizes';
 import { INITIAL_GAME_STATE } from './state/initial-state';
 import { ThemeId } from './types/theme';
+import { BoardSizeId } from './data/board-sizes';
 
 let gameState: GameState = structuredClone(INITIAL_GAME_STATE);
 
@@ -98,7 +99,7 @@ function renderSettings(rootElement: HTMLElement) {
 
         <div class="settings-visual">
             <div class="visual-shot"><img src="" alt=""></div>
-            <div class="settings-confirmed"> ${themeId} / ${playerId} / ${boardSizeId}  <button><img src="" alt="" style="width: 20px; height: 20px;">Start</button></div>
+            <div class="settings-confirmed"> ${gameState.settings.themeId} / ${gameState.settings.startingPlayer} / ${gameState.settings.boardSize}  <button><img src="" alt="" style="width: 20px; height: 20px;">Start</button></div>
         </div>
 
     </div>
@@ -108,6 +109,8 @@ function renderSettings(rootElement: HTMLElement) {
 
     </main>
     `;
+
+    addSettingsListeners(rootElement)
 
 }
 
@@ -131,6 +134,20 @@ function addSettingsListeners(rootElement: HTMLElement) {
     themeOptions.forEach((option) => {
         option.addEventListener('change', () => {
             gameState.settings.themeId = option.value as ThemeId;
+            render(rootElement);
+        });
+    });
+
+    playerOptions.forEach((option) => {
+        option.addEventListener('change', () => {
+            gameState.settings.startingPlayer = option.value as PlayerId;
+            render(rootElement);
+        });
+    });
+
+    boardSizeOptions.forEach((option) => {
+        option.addEventListener('change', () => {
+            gameState.settings.boardSize = Number(option.value) as BoardSizeId;
             render(rootElement);
         });
     });

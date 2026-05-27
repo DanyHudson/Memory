@@ -1,4 +1,4 @@
-export type BoardSizeId = 16 | 24 | 36;
+export type BoardSizeId = 16 | 24 | 36 ;
 
 export type BoardSize = {
   id: BoardSizeId;
