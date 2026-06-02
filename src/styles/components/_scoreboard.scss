@@ -1,0 +1,49 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.scoreboard {
+    @include control-surface;
+
+    display: inline-flex;
+    padding: $space-2;
+
+    &__list {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-2;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__player {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-2;
+        padding: 0.45rem 0.75rem;
+        border-radius: $radius-s;
+        font-weight: 700;
+        line-height: 1;
+
+        &--orange {
+            background-color: $color-orange-soft;
+            color: $color-orange;
+        }
+
+        &--blue {
+            background-color: $color-blue-soft;
+            color: $color-blue;
+        }
+    }
+
+    &__icon {
+        inline-size: 1rem;
+        block-size: 1rem;
+        object-fit: contain;
+    }
+
+    &__score {
+        min-inline-size: 1ch;
+        text-align: center;
+    }
+}

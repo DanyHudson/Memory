@@ -1,0 +1,82 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.button {
+    @include control-surface;
+    @include focus-ring;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    min-block-size: 3rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid transparent;
+    color: $color-brand;
+    font: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    &__icon {
+        inline-size: 1rem;
+        block-size: 1rem;
+        flex-shrink: 0;
+        object-fit: contain;
+    }
+
+    &__label {
+        white-space: nowrap;
+    }
+
+    &--ghost {
+        background-color: $color-brand-soft;
+        color: $color-brand;
+
+        &:hover {
+            background-color: $color-brand;
+            color: $color-surface;
+            box-shadow: 0 0.5rem 1rem rgba($color-brand, 0.18);
+        }
+
+        &:active {
+            background-color: $color-brand-dark;
+            color: $color-surface;
+        }
+    }
+
+    &--primary {
+        background-color: $color-brand;
+        color: $color-surface;
+
+        &:hover {
+            background-color: $color-brand-dark;
+            box-shadow: 0 0.75rem 1.25rem rgba($color-brand, 0.2);
+        }
+
+        &:active {
+            background-color: $color-brand-dark;
+        }
+    }
+}

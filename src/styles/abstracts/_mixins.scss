@@ -1,0 +1,27 @@
+@use './variables' as *;
+
+@mixin panel-surface {
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-l;
+    box-shadow: $shadow-panel;
+}
+
+@mixin control-surface {
+    background: $color-surface-muted;
+    border-radius: $radius-m;
+    border: 1px solid transparent;
+}
+
+@mixin focus-ring {
+    &:focus-visible {
+        outline: 3px solid rgba($color-brand, 0.25);
+        outline-offset: 2px;
+    }
+}
+
+@mixin respond-down($breakpoint) {
+    @media (max-width: $breakpoint) {
+        @content;
+    }
+}

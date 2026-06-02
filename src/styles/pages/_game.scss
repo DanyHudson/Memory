@@ -1,0 +1,209 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.game-screen {
+    min-height: 100vh;
+    padding: $space-6;
+    background:
+        radial-gradient(circle at top, #ffffff 0%, #f4f7fb 52%, #edf3f8 100%);
+    color: $color-text;
+
+    &__panel {
+        inline-size: min(100%, 72rem);
+        margin-inline: auto;
+    }
+
+    &__topbar {
+        @include panel-surface;
+
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: $space-4;
+        padding: $space-4 $space-5;
+        margin-bottom: $space-8;
+    }
+
+    &__turn {
+        @include control-surface;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: $space-2;
+        padding: 0.85rem 1rem;
+        color: $color-brand;
+        font-weight: 700;
+        justify-self: center;
+    }
+
+    &__turn-label {
+        color: $color-text;
+    }
+
+    &__turn-icon {
+        inline-size: 1.35rem;
+        block-size: 1.35rem;
+        object-fit: contain;
+    }
+
+    &__exit {
+        justify-self: end;
+    }
+
+    &__board-area {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.game-board {
+    --game-columns: 4;
+
+    display: grid;
+    grid-template-columns: repeat(var(--game-columns), minmax(0, $card-size-desktop));
+    gap: $space-3;
+    justify-content: center;
+
+    &--16 {
+        max-inline-size: calc((4 * #{$card-size-desktop}) + (3 * #{$space-3}));
+    }
+
+    &--24,
+    &--36 {
+        max-inline-size: calc((6 * #{$card-size-desktop}) + (5 * #{$space-3}));
+    }
+}
+
+.game-card {
+    @include focus-ring;
+
+    position: relative;
+    inline-size: $card-size-desktop;
+    block-size: $card-size-desktop;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    perspective: 800px;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    &__face {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $radius-m;
+        backface-visibility: hidden;
+        transition: transform 0.35s ease;
+    }
+
+    &__face--back {
+        background: linear-gradient(180deg, $color-brand 0%, $color-brand-dark 100%);
+        box-shadow: $shadow-card;
+    }
+
+    &__face--front {
+        @include panel-surface;
+
+        transform: rotateY(180deg);
+    }
+
+    &__back-icon {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+    }
+
+    &__image {
+        inline-size: 58%;
+        block-size: 58%;
+        object-fit: contain;
+    }
+
+    &__placeholder {
+        inline-size: 58%;
+        block-size: 0.2rem;
+        border-radius: 999px;
+        background-color: $color-border;
+    }
+
+    &--flipped,
+    &[aria-pressed='true'] {
+        .game-card__face--back {
+            transform: rotateY(180deg);
+        }
+
+        .game-card__face--front {
+            transform: rotateY(0deg);
+        }
+    }
+
+    &--matched {
+        opacity: 0.72;
+    }
+
+    &--matched,
+    &--matched[aria-pressed='true'] {
+        .game-card__face--front {
+            border-color: rgba($color-brand, 0.22);
+            box-shadow: 0 0.4rem 1rem rgba($color-brand, 0.12);
+        }
+    }
+}
+
+@media (max-width: $bp-tablet) {
+    .game-screen {
+        &__topbar {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+
+        &__exit {
+            justify-self: center;
+        }
+    }
+
+    .game-board {
+        grid-template-columns: repeat(var(--game-columns), minmax(0, $card-size-tablet));
+    }
+
+    .game-card {
+        inline-size: $card-size-tablet;
+        block-size: $card-size-tablet;
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    .game-screen {
+        padding: $space-4;
+    }
+
+    .scoreboard {
+        inline-size: 100%;
+        justify-content: center;
+
+        &__list {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+
+    .game-board {
+        gap: $space-2;
+        grid-template-columns: repeat(var(--game-columns), minmax(0, $card-size-mobile));
+    }
+
+    .game-card {
+        inline-size: $card-size-mobile;
+        block-size: $card-size-mobile;
+    }
+}
