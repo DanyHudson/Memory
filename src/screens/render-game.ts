@@ -2,10 +2,19 @@ import { BOARD_SIZES } from '../data/board-sizes';
 import { THEMES } from '../data/themes';
 import type { GameState } from '../types/game';
 
-export function renderGame(
-    rootElement: HTMLElement,
-    gameState: GameState,
-) {
+type RenderGameParams = {
+    rootElement: HTMLElement;
+    gameState: GameState;
+    onExit: () => void;
+    onCardClick: (cardId: string) => void;
+};
+
+export function renderGame({
+    rootElement,
+    gameState,
+    onExit,
+    onCardClick,
+}: RenderGameParams) {
     const board = BOARD_SIZES.find((entry) => entry.id === gameState.settings.boardSize);
     const theme = THEMES.find((entry) => entry.id === gameState.settings.themeId);
 
@@ -14,16 +23,7 @@ export function renderGame(
         return;
     }
 
-    const deckToRender = gameState.deck.length
-        ? gameState.deck
-        : Array.from({ length: board.totalCards }, (_, index) => ({
-            id: `placeholder-${index + 1}`,
-            faceId: `placeholder-${index + 1}`,
-            image: '',
-            alt: 'Placeholder card',
-            isFlipped: false,
-            isMatched: false,
-        }));
+    const deckToRender = gameState.deck;
 
     rootElement.innerHTML = `
         <main class="game-screen">
@@ -84,7 +84,7 @@ export function renderGame(
                                     <button
                                         type="button"
                                         class="game-card${card.isFlipped ? ' game-card--flipped' : ''}${card.isMatched ? ' game-card--matched' : ''}"
-                                        aria-label="${card.alt}"
+                                        aria-label="${card.isFlipped || card.isMatched ? card.alt : 'Hidden memory card'}"
                                         aria-pressed="${card.isFlipped ? 'true' : 'false'}"
                                         data-card-id="${card.id}"
                                         data-card-index="${index}"
@@ -109,4 +109,37 @@ export function renderGame(
             </div>
         </main>
     `;
+
+    addExitButtonListener(rootElement, onExit);
+    addCardListeners(rootElement, onCardClick);
+}
+
+function addExitButtonListener(
+    rootElement: HTMLElement,
+    onExit: () => void,
+) {
+    const exitButton = rootElement.querySelector<HTMLButtonElement>('.game-screen__exit');
+
+    if (exitButton) {
+        exitButton.addEventListener('click', onExit);
+    }
+}
+
+function addCardListeners(
+    rootElement: HTMLElement,
+    onCardClick: (cardId: string) => void,
+) {
+    const cards = rootElement.querySelectorAll<HTMLButtonElement>('[data-card-id]');
+
+    cards.forEach((cardElement) => {
+        cardElement.addEventListener('click', () => {
+            const cardId = cardElement.dataset.cardId;
+
+            if (!cardId) {
+                return;
+            }
+
+            onCardClick(cardId);
+        });
+    });
 }
