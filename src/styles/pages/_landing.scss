@@ -1,0 +1,131 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.landing-screen {
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    background:
+        radial-gradient(circle at top left, rgba(214, 218, 108, 0.08), transparent 28%),
+        linear-gradient(180deg, #2f3130 0%, #2b2d2c 100%);
+    color: $color-surface;
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: -5rem;
+        bottom: 2rem;
+        inline-size: 14rem;
+        block-size: 14rem;
+        border: 0.9rem solid rgba(214, 218, 108, 0.08);
+        border-radius: 2rem;
+        transform: rotate(-24deg);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 2.5rem;
+        bottom: 5.5rem;
+        inline-size: 1.2rem;
+        block-size: 1.2rem;
+        border-radius: 50%;
+        background: rgba(214, 218, 108, 0.08);
+        box-shadow:
+            1.8rem 0 rgba(214, 218, 108, 0.08),
+            0 1.8rem rgba(214, 218, 108, 0.08),
+            1.8rem 1.8rem rgba(214, 218, 108, 0.08);
+    }
+
+    &__hero {
+        position: relative;
+        z-index: 1;
+        inline-size: min(100%, 46rem);
+        margin-inline: auto;
+        padding: 4rem 2rem 4rem 6rem;
+    }
+
+    &__eyebrow {
+        margin: 0 0 $space-4;
+        color: rgba(255, 255, 255, 0.84);
+        font-size: clamp(1rem, 1.6vw, 1.45rem);
+        font-weight: 500;
+        line-height: 1.4;
+    }
+
+    &__title {
+        margin: 0 0 $space-8;
+        color: $color-surface;
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        font-weight: 800;
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+        text-wrap: balance;
+    }
+
+    // &__action {
+    //     min-inline-size: 8.5rem;
+    //     padding-inline: 1.4rem;
+    // }
+
+    &__action {
+        min-inline-size: 8.5rem;
+        padding-inline: 1.4rem;
+        background-color: #f3eb63;
+        border-color: #f3eb63;
+        color: #2b2d2c;
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.18);
+
+        &:hover {
+            background-color: #fff27a;
+            border-color: #fff27a;
+            color: #232524;
+            box-shadow: 0 1rem 1.8rem rgba(0, 0, 0, 0.22);
+        }
+
+        &:active {
+            background-color: #e3da4d;
+            border-color: #e3da4d;
+            color: #232524;
+        }
+    }
+}
+
+@media (max-width: $bp-tablet) {
+    .landing-screen {
+        &__hero {
+            padding: 3rem 2rem 3rem 3rem;
+        }
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    .landing-screen {
+        &::before {
+            left: -6rem;
+            bottom: 1rem;
+            inline-size: 11rem;
+            block-size: 11rem;
+        }
+
+        &::after {
+            left: 1.5rem;
+            bottom: 4rem;
+        }
+
+        &__hero {
+            inline-size: 100%;
+            padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+        }
+
+        &__title {
+            margin-bottom: $space-6;
+        }
+
+        &__action {
+            min-inline-size: 7.5rem;
+        }
+    }
+}
