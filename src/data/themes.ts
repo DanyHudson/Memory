@@ -10,7 +10,8 @@ export const THEMES: Theme[] = [
                 hover: '/src/assets/images/shared/icons/exit-icon-white.svg',
             },
             playerPawns: {
-                blue: '/src/assets/images/shared/icons/pawn-icon-blue.svg',
+                // blue: '/src/assets/images/shared/icons/pawn-icon-blue.svg',
+                blue: '../assets/images/shared/icons/pawn-icon-blue.svg',
                 orange: '/src/assets/images/shared/icons/pawn-icon-orange.svg',
                 neutral: '/src/assets/images/shared/icons/pawn-icon-mint.svg',
             },
