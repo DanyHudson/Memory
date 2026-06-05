@@ -77,50 +77,6 @@ function exitGame(rootElement: HTMLElement) {
     render(rootElement);
 }
 
-// function flipCard(rootElement: HTMLElement, cardId: string) {
-//     if (gameState.flippedCardIds.length >= 2) {
-//         return;
-//     }
-
-//     const selectedCard = gameState.deck.find((card) => card.id === cardId);
-
-//     if (!selectedCard || selectedCard.isFlipped || selectedCard.isMatched) {
-//         return;
-//     }
-
-//     selectedCard.isFlipped = true;
-//     gameState.flippedCardIds.push(selectedCard.id);
-
-//     if (gameState.flippedCardIds.length === 2) {
-//         resolveTurn();
-//     }
-
-//     render(rootElement);
-// }
-
-// function resolveTurn() {
-//     const [firstCardId, secondCardId] = gameState.flippedCardIds;
-//     const firstCard = gameState.deck.find((card) => card.id === firstCardId);
-//     const secondCard = gameState.deck.find((card) => card.id === secondCardId);
-
-//     if (!firstCard || !secondCard) {
-//         gameState.flippedCardIds = [];
-//         return;
-//     }
-
-//     if (firstCard.faceId === secondCard.faceId) {
-//         firstCard.isMatched = true;
-//         secondCard.isMatched = true;
-//         gameState.score[gameState.currentPlayer] += 1;
-//     } else {
-//         firstCard.isFlipped = false;
-//         secondCard.isFlipped = false;
-//         gameState.currentPlayer =
-//             gameState.currentPlayer === 'blue' ? 'orange' : 'blue';
-//     }
-
-//     gameState.flippedCardIds = [];
-// }
 
 function flipCard(rootElement: HTMLElement, cardId: string) {
     if (isResolvingTurn || gameState.flippedCardIds.length >= 2) {
