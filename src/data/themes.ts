@@ -6,104 +6,172 @@ export const THEMES: Theme[] = [
         label: 'DA projects theme',
         assets: {
             exit: {
-                default: '/src/assets/images/themes/da-projects/exit-icon-blue.svg',
-                hover: '/src/assets/images/shared/icons/exit-icon-white.svg',
+                default: new URL(
+                    '../assets/images/themes/da-projects/exit-icon-blue.svg',
+                    import.meta.url,
+                ).href,
+                hover: new URL(
+                    '../assets/images/shared/icons/exit-icon-white.svg',
+                    import.meta.url,
+                ).href,
             },
             playerPawns: {
-                // blue: '/src/assets/images/shared/icons/pawn-icon-blue.svg',
-                blue: '../assets/images/shared/icons/pawn-icon-blue.svg',
-                orange: '/src/assets/images/shared/icons/pawn-icon-orange.svg',
-                neutral: '/src/assets/images/shared/icons/pawn-icon-mint.svg',
+                blue: new URL(
+                    '../assets/images/shared/icons/pawn-icon-blue.svg',
+                    import.meta.url,
+                ).href,
+                orange: new URL(
+                    '../assets/images/shared/icons/pawn-icon-orange.svg',
+                    import.meta.url,
+                ).href,
+                neutral: new URL(
+                    '../assets/images/shared/icons/pawn-icon-mint.svg',
+                    import.meta.url,
+                ).href,
             },
             cardFaces: [
                 {
                     id: 'basket',
-                    image: '/src/assets/images/themes/da-projects/basket.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/basket.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Basket',
                 },
                 {
                     id: 'chat',
-                    image: '/src/assets/images/themes/da-projects/chat.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/chat.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Chat',
                 },
                 {
                     id: 'chef-hat',
-                    image: '/src/assets/images/themes/da-projects/chef-hat.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/chef-hat.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Chef hat',
                 },
                 {
                     id: 'code-cuisine',
-                    image: '/src/assets/images/themes/da-projects/code-cuisine.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/code-cuisine.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Code Cuisine',
                 },
                 {
                     id: 'coins',
-                    image: '/src/assets/images/themes/da-projects/coins.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/coins.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Coins',
                 },
                 {
                     id: 'emoji',
-                    image: '/src/assets/images/themes/da-projects/emoji.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/emoji.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Emoji',
                 },
                 {
                     id: 'join-logo',
-                    image: '/src/assets/images/themes/da-projects/join-logo.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/join-logo.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Join logo',
                 },
                 {
                     id: 'pokedex',
-                    image: '/src/assets/images/themes/da-projects/pokedex.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/pokedex.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Pokedex',
                 },
                 {
                     id: 'poll-app-1',
-                    image: '/src/assets/images/themes/da-projects/poll-app-1.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/poll-app-1.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Poll app 1',
                 },
                 {
                     id: 'poll-app-2',
-                    image: '/src/assets/images/themes/da-projects/poll-app-2.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/poll-app-2.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Poll app 2',
                 },
                 {
                     id: 'pollo-loco',
-                    image: '/src/assets/images/themes/da-projects/pollo-loco.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/pollo-loco.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Pollo Loco',
                 },
                 {
                     id: 'profile',
-                    image: '/src/assets/images/themes/da-projects/profile.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/profile.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Profile',
                 },
                 {
                     id: 'sakura-eggs',
-                    image: '/src/assets/images/themes/da-projects/sakura-eggs.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/sakura-eggs.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Sakura eggs',
                 },
                 {
                     id: 'sakura-logo',
-                    image: '/src/assets/images/themes/da-projects/sakura-logo.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/sakura-logo.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Sakura logo',
                 },
                 {
                     id: 'sakura-noodles',
-                    image: '/src/assets/images/themes/da-projects/sakura-noodles.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/sakura-noodles.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Sakura noodles',
                 },
                 {
                     id: 'sakura-soup',
-                    image: '/src/assets/images/themes/da-projects/sakura-soup.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/sakura-soup.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Sakura soup',
                 },
                 {
                     id: 'tic-tac-toe',
-                    image: '/src/assets/images/themes/da-projects/tic-tac-toe.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/tic-tac-toe.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Tic tac toe',
                 },
                 {
                     id: 'wave',
-                    image: '/src/assets/images/themes/da-projects/wave.svg',
+                    image: new URL(
+                        '../assets/images/themes/da-projects/wave.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Wave',
                 },
             ],
@@ -114,105 +182,174 @@ export const THEMES: Theme[] = [
         label: 'Foods theme',
         assets: {
             exit: {
-                default: '/src/assets/images/themes/foods/exit-icon-foods.svg',
-                hover: '/src/assets/images/shared/icons/exit-icon-white.svg',
+                default: new URL(
+                    '../assets/images/themes/foods/exit-icon-orange.svg',
+                    import.meta.url,
+                ).href,
+                hover: new URL(
+                    '../assets/images/shared/icons/exit-icon-white.svg',
+                    import.meta.url,
+                ).href,
             },
             playerPawns: {
-                blue: '/src/assets/images/shared/icons/pawn-icon-blue.svg',
-                orange: '/src/assets/images/shared/icons/pawn-icon-orange.svg',
-                neutral: '/src/assets/images/shared/icons/pawn-icon-mint.svg',
+                blue: new URL(
+                    '../assets/images/shared/icons/pawn-icon-blue.svg',
+                    import.meta.url,
+                ).href,
+                orange: new URL(
+                    '../assets/images/shared/icons/pawn-icon-orange.svg',
+                    import.meta.url,
+                ).href,
+                neutral: new URL(
+                    '../assets/images/shared/icons/pawn-icon-mint.svg',
+                    import.meta.url,
+                ).href,
             },
             cardFaces: [
                 {
                     id: 'brezel',
-                    image: '/src/assets/images/themes/foods/brezel.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/brezel.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Brezel',
                 },
                 {
                     id: 'burger',
-                    image: '/src/assets/images/themes/foods/burger.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/burger.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Burger',
                 },
                 {
                     id: 'chocolate',
-                    image: '/src/assets/images/themes/foods/chocolate.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/chocolate.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Chocolate',
                 },
                 {
                     id: 'corn-dog',
-                    image: '/src/assets/images/themes/foods/corn-dog.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/corn-dog.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Corn dog',
                 },
                 {
                     id: 'creme-brulee',
-                    image: '/src/assets/images/themes/foods/creme-brulee.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/creme-brulee.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Creme brulee',
                 },
                 {
                     id: 'cup-cake',
-                    image: '/src/assets/images/themes/foods/cup-cake.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/cup-cake.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Cup cake',
                 },
                 {
                     id: 'donut',
-                    image: '/src/assets/images/themes/foods/donut.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/donut.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Donut',
                 },
                 {
                     id: 'fries',
-                    image: '/src/assets/images/themes/foods/fries.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/fries.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Fries',
                 },
                 {
                     id: 'ice-cream',
-                    image: '/src/assets/images/themes/foods/ice-cream.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/ice-cream.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Ice cream',
                 },
                 {
                     id: 'macarons',
-                    image: '/src/assets/images/themes/foods/macarons.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/macarons.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Macarons',
                 },
                 {
                     id: 'maki',
-                    image: '/src/assets/images/themes/foods/maki.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/maki.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Maki',
                 },
                 {
                     id: 'pizza',
-                    image: '/src/assets/images/themes/foods/pizza.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/pizza.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Pizza',
                 },
                 {
                     id: 'pudding',
-                    image: '/src/assets/images/themes/foods/pudding.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/pudding.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Pudding',
                 },
                 {
                     id: 'sandwich',
-                    image: '/src/assets/images/themes/foods/sandwich.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/sandwich.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Sandwich',
                 },
                 {
                     id: 'taco',
-                    image: '/src/assets/images/themes/foods/taco.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/taco.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Taco',
                 },
                 {
                     id: 'wings',
-                    image: '/src/assets/images/themes/foods/wings.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/wings.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Wings',
                 },
                 {
                     id: 'wrap',
-                    image: '/src/assets/images/themes/foods/wrap.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/wrap.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Wrap',
                 },
                 {
                     id: 'salad',
-                    image: '/src/assets/images/themes/foods/salad.svg',
+                    image: new URL(
+                        '../assets/images/themes/foods/salad.svg',
+                        import.meta.url,
+                    ).href,
                     alt: 'Salad',
-                }
+                },
             ],
         },
     },
