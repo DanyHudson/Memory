@@ -3,7 +3,7 @@ import type { ThemeId } from './theme';
 
 export type PlayerId = 'blue' | 'orange';
 
-export type ScreenId = 'landing' | 'settings' | 'game' | 'result';
+export type ScreenId = 'landing' | 'settings' | 'game' | 'game-over' | 'result';
 
 export type ResultId = 'blue' | 'orange' | 'draw' | null;
 
