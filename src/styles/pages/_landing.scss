@@ -3,25 +3,27 @@
 
 .landing-screen {
     min-height: 100vh;
+    inline-size: 100%;
     display: grid;
     align-items: center;
-    background:
-        radial-gradient(circle at top left, rgba(214, 218, 108, 0.08), transparent 28%),
-        linear-gradient(180deg, #2f3130 0%, #2b2d2c 100%);
+    // background:
+    //     radial-gradient(circle at top left, rgba(240, 234, 110, 0.05), transparent 28%),
+    //     linear-gradient(180deg, #2f3130 0%, #2b2d2c 100%);
+    background: #303131;
     color: $color-surface;
     overflow: hidden;
     position: relative;
 
-    &::before {
-        content: '';
+    &__decor {
         position: absolute;
         left: -5rem;
         bottom: 2rem;
         inline-size: 14rem;
         block-size: 14rem;
-        border: 0.9rem solid rgba(214, 218, 108, 0.08);
-        border-radius: 2rem;
-        transform: rotate(-24deg);
+        background: url('/src/assets/images/shared/icons/controller-decor-icon-.svg') center / contain no-repeat;
+        opacity: 0.05;
+        transform: rotate(-37.42deg);
+        pointer-events: none;
     }
 
     &::after {
@@ -32,11 +34,11 @@
         inline-size: 1.2rem;
         block-size: 1.2rem;
         border-radius: 50%;
-        background: rgba(214, 218, 108, 0.08);
+        // background: rgba(240, 234, 110, 0.05);
         box-shadow:
-            1.8rem 0 rgba(214, 218, 108, 0.08),
-            0 1.8rem rgba(214, 218, 108, 0.08),
-            1.8rem 1.8rem rgba(214, 218, 108, 0.08);
+            1.8rem 0 rgba(240, 234, 110, 0.05),
+            0 1.8rem rgba(240, 234, 110, 0.05),
+            1.8rem 1.8rem rgba(240, 234, 110, 0.05);
     }
 
     &__hero {
@@ -64,11 +66,6 @@
         letter-spacing: -0.05em;
         text-wrap: balance;
     }
-
-    // &__action {
-    //     min-inline-size: 8.5rem;
-    //     padding-inline: 1.4rem;
-    // }
 
     &__action {
         min-inline-size: 8.5rem;
@@ -103,7 +100,7 @@
 
 @media (max-width: $bp-mobile) {
     .landing-screen {
-        &::before {
+        &__decor {
             left: -6rem;
             bottom: 1rem;
             inline-size: 11rem;
@@ -117,7 +114,7 @@
 
         &__hero {
             inline-size: 100%;
-            padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+            padding: 2.5rem 1.5rem;
         }
 
         &__title {

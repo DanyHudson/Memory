@@ -4,12 +4,14 @@ export function renderLanding(
 ) {
     rootElement.innerHTML = `
         <main class="landing-screen">
+            <div class="landing-screen__decor" aria-hidden="true"></div>
+
             <section class="landing-screen__hero">
                 <p class="landing-screen__eyebrow">It's play time.</p>
                 <h1 class="landing-screen__title">Ready to play?</h1>
 
                 <button
-                    class="button button--primary landing-screen__action"
+                    class="button landing-screen__action"
                     id="play-btn"
                     type="button"
                 >
