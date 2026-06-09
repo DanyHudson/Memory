@@ -26,21 +26,6 @@
         pointer-events: none;
     }
 
-    &::after {
-        content: '';
-        position: absolute;
-        left: 2.5rem;
-        bottom: 5.5rem;
-        inline-size: 1.2rem;
-        block-size: 1.2rem;
-        border-radius: 50%;
-        // background: rgba(240, 234, 110, 0.05);
-        box-shadow:
-            1.8rem 0 rgba(240, 234, 110, 0.05),
-            0 1.8rem rgba(240, 234, 110, 0.05),
-            1.8rem 1.8rem rgba(240, 234, 110, 0.05);
-    }
-
     &__hero {
         position: relative;
         z-index: 1;
