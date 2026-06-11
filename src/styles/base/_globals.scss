@@ -1,0 +1,31 @@
+@use '../abstracts/variables' as *;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #303131;
+    color: $color-text;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+img {
+    display: block;
+    max-inline-size: 100%;
+}
+
+button {
+    font: inherit;
+}
