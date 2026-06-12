@@ -71,6 +71,8 @@ function renderResultScreen(rootElement: HTMLElement) {
     renderResult({
         rootElement,
         gameState,
+        onHome: () => goHome(rootElement),
+        onPlayAgain: () => playAgain(rootElement),
     });
 }
 
@@ -119,6 +121,17 @@ function exitGame(rootElement: HTMLElement) {
     };
     gameState.winner = null;
     gameState.currentPlayer = gameState.settings.startingPlayer;
+    render(rootElement);
+}
+
+function goHome(rootElement: HTMLElement) {
+    gameState = structuredClone(INITIAL_GAME_STATE);
+    render(rootElement);
+}
+
+function playAgain(rootElement: HTMLElement) {
+    gameState = createGameStateFromSettings(gameState);
+    gameState.screen = 'game';
     render(rootElement);
 }
 
