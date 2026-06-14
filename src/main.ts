@@ -111,17 +111,30 @@ function startGame(rootElement: HTMLElement) {
     render(rootElement);
 }
 
+// function exitGame(rootElement: HTMLElement) {
+//     gameState.screen = 'settings';
+//     gameState.deck = [];
+//     gameState.flippedCardIds = [];
+//     gameState.score = {
+//         blue: 0,
+//         orange: 0,
+//     };
+//     gameState.winner = null;
+//     gameState.currentPlayer = gameState.settings.startingPlayer;
+//     render(rootElement);
+// }
+
 function exitGame(rootElement: HTMLElement) {
-    gameState.screen = 'settings';
-    gameState.deck = [];
-    gameState.flippedCardIds = [];
-    gameState.score = {
-        blue: 0,
-        orange: 0,
-    };
-    gameState.winner = null;
-    gameState.currentPlayer = gameState.settings.startingPlayer;
-    render(rootElement);
+    gameState.screen = 'landing';
+    // gameState.deck = [];
+    // gameState.flippedCardIds = [];
+    // gameState.score = {
+    //     blue: 0,
+    //     orange: 0,
+    // };
+    // gameState.winner = null;
+    // gameState.currentPlayer = gameState.settings.startingPlayer;
+     render(rootElement);
 }
 
 function goHome(rootElement: HTMLElement) {
