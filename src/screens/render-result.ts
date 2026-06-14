@@ -5,14 +5,15 @@ type RenderResultParams = {
     rootElement: HTMLElement;
     gameState: GameState;
     onHome: () => void;
-    onPlayAgain: () => void;
+    // onPla
+    // yAgain: () => void;
 };
 
 export function renderResult({
     rootElement,
     gameState,
     onHome,
-    onPlayAgain,
+    // onPlayAgain,
 }: RenderResultParams) {
     const theme = THEMES.find((entry) => entry.id === gameState.settings.themeId);
 
@@ -40,19 +41,19 @@ export function renderResult({
         </main>
     `;
 
-    addResultScreenListeners(rootElement, onHome, onPlayAgain);
+    addResultScreenListeners(rootElement, onHome); // , onPlayAgain
 }
 
 function addResultScreenListeners(
     rootElement: HTMLElement,
     onHome: () => void,
-    onPlayAgain: () => void,
+    // onPlayAgain: () => void,
 ) {
     const homeButton = rootElement.querySelector<HTMLButtonElement>('#result-home-btn');
-    const playAgainButton = rootElement.querySelector<HTMLButtonElement>('#result-play-again-btn');
+    // const playAgainButton = rootElement.querySelector<HTMLButtonElement>('#result-play-again-btn');
 
     homeButton?.addEventListener('click', onHome);
-    playAgainButton?.addEventListener('click', onPlayAgain);
+    // playAgainButton?.addEventListener('click', onPlayAgain);
 }
 
 function getResultLabel(winner: GameState['winner']) {

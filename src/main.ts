@@ -72,7 +72,7 @@ function renderResultScreen(rootElement: HTMLElement) {
         rootElement,
         gameState,
         onHome: () => goHome(rootElement),
-        onPlayAgain: () => playAgain(rootElement),
+        // onPlayAgain: () => playAgain(rootElement),
     });
 }
 
