@@ -10,6 +10,7 @@ import { renderResult } from './screens/render-result';
 
 let gameState: GameState = structuredClone(INITIAL_GAME_STATE);
 let isResolvingTurn = false;
+let isExitDialogOpen = false;
 const root = document.getElementById('root');
 
 if (!root) {
@@ -55,7 +56,10 @@ function renderGameScreen(rootElement: HTMLElement) {
     renderGame({
         rootElement,
         gameState,
-        onExit: () => exitGame(rootElement),
+        isExitDialogOpen,
+        onExit: () => openExitDialog(rootElement),
+        onBackToGame: () => closeExitDialog(rootElement),
+        onConfirmExit: () => confirmExitGame(rootElement),
         onCardClick: (cardId) => flipCard(rootElement, cardId),
     });
 }
@@ -125,16 +129,16 @@ function startGame(rootElement: HTMLElement) {
 // }
 
 function exitGame(rootElement: HTMLElement) {
-    gameState.screen = 'landing';
-    // gameState.deck = [];
-    // gameState.flippedCardIds = [];
-    // gameState.score = {
-    //     blue: 0,
-    //     orange: 0,
-    // };
-    // gameState.winner = null;
-    // gameState.currentPlayer = gameState.settings.startingPlayer;
-     render(rootElement);
+    gameState.screen = 'settings';
+    gameState.deck = [];
+    gameState.flippedCardIds = [];
+    gameState.score = {
+        blue: 0,
+        orange: 0,
+    };
+    gameState.winner = null;
+    gameState.currentPlayer = gameState.settings.startingPlayer;
+    render(rootElement);
 }
 
 function goHome(rootElement: HTMLElement) {
@@ -201,7 +205,7 @@ function openGameOverScreen(rootElement: HTMLElement) {
         gameState.screen = 'result';
         render(rootElement);
     }, 1500);
-} 
+}
 
 function matchFlippedCards(firstCard: MemoryCard, secondCard: MemoryCard) {
     if (firstCard.faceId === secondCard.faceId) {
@@ -214,6 +218,21 @@ function matchFlippedCards(firstCard: MemoryCard, secondCard: MemoryCard) {
     secondCard.isFlipped = false;
     gameState.currentPlayer =
         gameState.currentPlayer === 'blue' ? 'orange' : 'blue';
+}
+
+function openExitDialog(rootElement: HTMLElement) {
+    isExitDialogOpen = true;
+    render(rootElement);
+}
+
+function closeExitDialog(rootElement: HTMLElement) {
+    isExitDialogOpen = false;
+    render(rootElement);
+}
+
+function confirmExitGame(rootElement: HTMLElement) {
+    isExitDialogOpen = false;
+    exitGame(rootElement);
 }
 
 render(root);   

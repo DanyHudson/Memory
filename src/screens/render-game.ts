@@ -2,17 +2,30 @@ import { BOARD_SIZES } from '../data/board-sizes';
 import { THEMES } from '../data/themes';
 import type { GameState } from '../types/game';
 
+// type RenderGameParams = {
+//     rootElement: HTMLElement;
+//     gameState: GameState;
+//     onExit: () => void;
+//     onCardClick: (cardId: string) => void;
+// };
+
 type RenderGameParams = {
     rootElement: HTMLElement;
     gameState: GameState;
+    isExitDialogOpen: boolean;
     onExit: () => void;
+    onBackToGame: () => void;
+    onConfirmExit: () => void;
     onCardClick: (cardId: string) => void;
 };
 
 export function renderGame({
     rootElement,
     gameState,
+    isExitDialogOpen,
     onExit,
+    onBackToGame,
+    onConfirmExit,
     onCardClick,
 }: RenderGameParams) {
     const board = BOARD_SIZES.find((entry) => entry.id === gameState.settings.boardSize);
@@ -79,8 +92,8 @@ export function renderGame({
                         style="--game-columns: ${board.columns};"
                     >
                         ${deckToRender
-                            .map(
-                                (card, index) => `
+            .map(
+                (card, index) => `
                                     <button
                                         type="button"
                                         class="game-card${card.isFlipped ? ' game-card--flipped' : ''}${card.isMatched ? ' game-card--matched' : ''}"
@@ -94,16 +107,15 @@ export function renderGame({
                                         </span>
 
                                         <span class="game-card__face game-card__face--front" aria-hidden="true">
-                                            ${
-                                                card.image
-                                                    ? `<img class="game-card__image" src="${card.image}" alt="">`
-                                                    : `<span class="game-card__placeholder"></span>`
-                                            }
+                                            ${card.image
+                        ? `<img class="game-card__image" src="${card.image}" alt="">`
+                        : `<span class="game-card__placeholder"></span>`
+                    }
                                         </span>
                                     </button>
                                 `,
-                            )
-                            .join('')}
+            )
+            .join('')}
                     </div>
                 </section>
             </div>
