@@ -115,19 +115,6 @@ function startGame(rootElement: HTMLElement) {
     render(rootElement);
 }
 
-// function exitGame(rootElement: HTMLElement) {
-//     gameState.screen = 'settings';
-//     gameState.deck = [];
-//     gameState.flippedCardIds = [];
-//     gameState.score = {
-//         blue: 0,
-//         orange: 0,
-//     };
-//     gameState.winner = null;
-//     gameState.currentPlayer = gameState.settings.startingPlayer;
-//     render(rootElement);
-// }
-
 function exitGame(rootElement: HTMLElement) {
     gameState.screen = 'settings';
     gameState.deck = [];
@@ -146,11 +133,11 @@ function goHome(rootElement: HTMLElement) {
     render(rootElement);
 }
 
-function playAgain(rootElement: HTMLElement) {
-    gameState = createGameStateFromSettings(gameState);
-    gameState.screen = 'game';
-    render(rootElement);
-}
+// function playAgain(rootElement: HTMLElement) {
+//     gameState = createGameStateFromSettings(gameState);
+//     gameState.screen = 'game';
+//     render(rootElement);
+// }
 
 function flipCard(rootElement: HTMLElement, cardId: string) {
     if (isResolvingTurn || gameState.flippedCardIds.length >= 2) {

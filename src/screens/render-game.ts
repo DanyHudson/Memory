@@ -119,11 +119,44 @@ export function renderGame({
                     </div>
                 </section>
             </div>
+
+${isExitDialogOpen
+            ? `
+            <div class="exit-dialog" role="dialog" aria-modal="true" aria-labelledby="exit-dialog-title">
+                <div class="exit-dialog__panel">
+                    <h2 id="exit-dialog-title" class="exit-dialog__title">
+                        Are you sure you want to quit the game?
+                    </h2>
+
+                    <div class="exit-dialog__actions">
+                        <button
+                            id="back-to-game-btn"
+                            type="button"
+                            class="button button--secondary"
+                        >
+                            Back to game
+                        </button>
+
+                        <button
+                            id="confirm-exit-btn"
+                            type="button"
+                            class="button button--primary"
+                        >
+                            Exit game
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `
+            : ''
+        }
+
         </main>
     `;
 
     addExitButtonListener(rootElement, onExit);
     addCardListeners(rootElement, onCardClick);
+    addExitDialogListeners(rootElement, onBackToGame, onConfirmExit);
 }
 
 function addExitButtonListener(
@@ -154,4 +187,16 @@ function addCardListeners(
             onCardClick(cardId);
         });
     });
+}
+
+function addExitDialogListeners(
+    rootElement: HTMLElement,
+    onBackToGame: () => void,
+    onConfirmExit: () => void,
+) {
+    const backButton = rootElement.querySelector<HTMLButtonElement>('#back-to-game-btn');
+    const confirmButton = rootElement.querySelector<HTMLButtonElement>('#confirm-exit-btn');
+
+    backButton?.addEventListener('click', onBackToGame);
+    confirmButton?.addEventListener('click', onConfirmExit);
 }
