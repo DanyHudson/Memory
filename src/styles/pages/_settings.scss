@@ -1,36 +1,177 @@
-.settings-screen {
-    background-color: azure;
-    height: 500px;
-    width: 800px;
-    display: flex;
-    flex-direction: column;
-}
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
-.settings-wrapper {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    height: 100%;
-}
+.settings {
+    min-height: 100vh;
+    padding: clamp(2rem, 5vw, 4rem);
+    background:
+        radial-gradient(circle at top left, #f8f6ef 0%, #f4f3ee 35%, #efefea 100%);
+    color: #2f3130;
 
-.settings-visual {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100%;
-    gap: 32px;
+    &__inner {
+        inline-size: min(100%, 72rem);
+        margin-inline: auto;
+    }
 
-    img {
-        height: 312px;
-        width: 360px;
-        background-color: royalblue;
-        border-radius: 24px;
+    &__header {
+        margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    &__title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+    }
+
+    &__layout {
+        display: grid;
+        grid-template-columns: minmax(18rem, 24rem) minmax(20rem, 1fr);
+        gap: clamp(2rem, 5vw, 5rem);
+        align-items: start;
+    }
+
+    &__controls {
+        display: grid;
+        gap: 2.75rem;
+    }
+
+    &__group {
+        border: 0;
+        padding: 0;
+        min-inline-size: 0;
+        display: grid;
+        gap: 0.875rem;
+    }
+
+    &__group-title {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.45rem;
+        font-weight: 700;
+    }
+
+    &__group-icon {
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    &__option {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 1.1rem;
+        line-height: 1.4;
+        cursor: pointer;
+    }
+
+    &__radio {
+        inline-size: 1.1rem;
+        block-size: 1.1rem;
+        accent-color: #444;
+        flex-shrink: 0;
+    }
+
+    &__preview {
+        display: grid;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    &__preview-stage {
+        position: relative;
+        inline-size: min(100%, 21rem);
+        aspect-ratio: 1 / 1;
+        margin-inline: auto;
+        border-radius: 1.5rem;
+        background: #bfe8f7;
+        overflow: hidden;
+    }
+
+    &__preview-card {
+        position: absolute;
+        inline-size: 44%;
+        aspect-ratio: 1 / 1;
+        border-radius: 1.1rem;
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.16);
+
+        &--primary {
+            top: 22%;
+            left: 14%;
+            background: #0f7592;
+        }
+
+        &--secondary {
+            right: 12%;
+            bottom: 16%;
+            background: #ffffff;
+        }
+    }
+
+    &__summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.9rem 1rem;
+        background: rgba(255, 255, 255, 0.68);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 0.2rem;
+    }
+
+    &__summary-list {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+    }
+
+    &__summary-item {
+        font-size: 1rem;
+        color: #3e403f;
+    }
+
+    &__start {
+        flex: 0 0 auto;
+        min-inline-size: 8rem;
+        justify-content: center;
+        background: #efe45a;
+        border-color: #efe45a;
+        color: #272927;
     }
 }
 
-.settings-icon {
-    width: 24px;
-    height: 24px;
-    background-color: rgb(255, 255, 255);
+@media (max-width: $bp-tablet) {
+    .settings {
+        &__layout {
+            grid-template-columns: 1fr;
+        }
+
+        &__preview {
+            justify-items: start;
+        }
+
+        &__preview-stage {
+            inline-size: min(100%, 24rem);
+            margin-inline: 0;
+        }
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    .settings {
+        padding: 1.25rem;
+
+        &__summary {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        &__start {
+            inline-size: 100%;
+        }
+    }
 }

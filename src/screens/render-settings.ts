@@ -20,129 +20,153 @@ export function renderSettings({
     onStart,
 }: RenderSettingsParams) {
     rootElement.innerHTML = `
-        <main>
-            <section class="settings-screen">
-                <header>
-                    <h1>Settings</h1>
-                </header>
+    <main class="settings">
+        <section class="settings__screen">
+            <header class="settings__header">
+                <h1 class="settings__title">Settings</h1>
+            </header>
 
-                <div class="settings-wrapper">
-                    <div class="settings-select">
-                        <fieldset class="settings-item">
-                            <legend class="settings-title">
-                                <img src="" alt="" class="settings-icon">
-                                Game Themes
-                            </legend>
+            <div class="settings__layout">
+                <div class="settings__controls">
+                    <fieldset class="settings__group">
+                        <legend class="settings__group-title">
+                            <img src="" alt="" class="settings__group-icon">
+                            Game themes
+                        </legend>
 
-                            <div class="settings-option">
-                                <input
-                                    type="radio"
-                                    id="da-projects-theme"
-                                    name="game-theme"
-                                    value="da-projects"
-                                    ${gameState.settings.themeId === 'da-projects' ? 'checked' : ''}
-                                >
-                                <label for="da-projects-theme">DA Projects Theme</label>
-                            </div>
+                        <label class="settings__option settings__option--theme" for="da-projects-theme">
+                            <input
+                                class="settings__radio"
+                                type="radio"
+                                id="da-projects-theme"
+                                name="game-theme"
+                                value="da-projects"
+                                ${gameState.settings.themeId === 'da-projects' ? 'checked' : ''}
+                            >
+                            <span class="settings__option-label">DA Projects theme</span>
+                        </label>
 
-                            <div class="settings-option">
-                                <input
-                                    type="radio"
-                                    id="foods-theme"
-                                    name="game-theme"
-                                    value="foods"
-                                    ${gameState.settings.themeId === 'foods' ? 'checked' : ''}
-                                >
-                                <label for="foods-theme">Foods Theme</label>
-                            </div>
-                        </fieldset>
+                        <label class="settings__option settings__option--theme" for="foods-theme">
+                            <input
+                                class="settings__radio"
+                                type="radio"
+                                id="foods-theme"
+                                name="game-theme"
+                                value="foods"
+                                ${gameState.settings.themeId === 'foods' ? 'checked' : ''}
+                            >
+                            <span class="settings__option-label">Foods theme</span>
+                        </label>
+                    </fieldset>
 
-                        <fieldset class="settings-item">
-                            <legend class="settings-title">
-                                <img src="" alt="" class="settings-icon">
-                                Player
-                            </legend>
+                    <fieldset class="settings__group">
+                        <legend class="settings__group-title">
+                            <img src="" alt="" class="settings__group-icon">
+                            Choose player
+                        </legend>
 
-                            <div class="settings-option">
-                                <input
-                                    type="radio"
-                                    id="blue-player"
-                                    name="player"
-                                    value="blue"
-                                    ${gameState.settings.startingPlayer === 'blue' ? 'checked' : ''}
-                                >
-                                <label for="blue-player">Blue Player</label>
-                            </div>
+                        <label class="settings__option" for="blue-player">
+                            <input
+                                class="settings__radio"
+                                type="radio"
+                                id="blue-player"
+                                name="player"
+                                value="blue"
+                                ${gameState.settings.startingPlayer === 'blue' ? 'checked' : ''}
+                            >
+                            <span class="settings__option-label">Blue</span>
+                        </label>
 
-                            <div class="settings-option">
-                                <input
-                                    type="radio"
-                                    id="orange-player"
-                                    name="player"
-                                    value="orange"
-                                    ${gameState.settings.startingPlayer === 'orange' ? 'checked' : ''}
-                                >
-                                <label for="orange-player">Orange Player</label>
-                            </div>
-                        </fieldset>
+                        <label class="settings__option" for="orange-player">
+                            <input
+                                class="settings__radio"
+                                type="radio"
+                                id="orange-player"
+                                name="player"
+                                value="orange"
+                                ${gameState.settings.startingPlayer === 'orange' ? 'checked' : ''}
+                            >
+                            <span class="settings__option-label">Orange</span>
+                        </label>
+                    </fieldset>
 
-                        <fieldset class="settings-item">
-                            <legend class="settings-title">
-                                <img src="" alt="" class="settings-icon">
-                                Board Size
-                            </legend>
+                    <fieldset class="settings__group">
+                        <legend class="settings__group-title">
+                            <img src="" alt="" class="settings__group-icon">
+                            Board size
+                        </legend>
 
-                            <div class="settings-option">
-                                <input
-                                    type="radio"
-                                    id="16-cards"
-                                    name="board-size"
-                                    value="16"
-                                    ${gameState.settings.boardSize === 16 ? 'checked' : ''}
-                                >
-                                <label for="16-cards">16 Cards</label>
-                            </div>
+                        <label class="settings__option" for="16-cards">
+                            <input
+                                class="settings__radio"
+                                type="radio"
+                                id="16-cards"
+                                name="board-size"
+                                value="16"
+                                ${gameState.settings.boardSize === 16 ? 'checked' : ''}
+                            >
+                            <span class="settings__option-label">16 cards</span>
+                        </label>
 
-                            <div class="settings-option">
-                                <input
-                                    type="radio"
-                                    id="24-cards"
-                                    name="board-size"
-                                    value="24"
-                                    ${gameState.settings.boardSize === 24 ? 'checked' : ''}
-                                >
-                                <label for="24-cards">24 Cards</label>
-                            </div>
+                        <label class="settings__option" for="24-cards">
+                            <input
+                                class="settings__radio"
+                                type="radio"
+                                id="24-cards"
+                                name="board-size"
+                                value="24"
+                                ${gameState.settings.boardSize === 24 ? 'checked' : ''}
+                            >
+                            <span class="settings__option-label">24 cards</span>
+                        </label>
 
-                            <div class="settings-option">
-                                <input
-                                    type="radio"
-                                    id="36-cards"
-                                    name="board-size"
-                                    value="36"
-                                    ${gameState.settings.boardSize === 36 ? 'checked' : ''}
-                                >
-                                <label for="36-cards">36 Cards</label>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <div class="settings-visual">
-                        <div class="visual-shot">
-                            <img src="" alt="">
-                        </div>
-
-                        <div class="settings-confirmed">
-                            ${gameState.settings.themeId} /
-                            ${gameState.settings.startingPlayer} /
-                            ${gameState.settings.boardSize}
-                            <button id="start-btn" class="start-btn">Start</button>
-                        </div>
-                    </div>
+                        <label class="settings__option" for="36-cards">
+                            <input
+                                class="settings__radio"
+                                type="radio"
+                                id="36-cards"
+                                name="board-size"
+                                value="36"
+                                ${gameState.settings.boardSize === 36 ? 'checked' : ''}
+                            >
+                            <span class="settings__option-label">36 cards</span>
+                        </label>
+                    </fieldset>
                 </div>
-            </section>
-        </main>
-    `;
+
+                <aside class="settings__preview">
+                    <div class="settings__preview-stage">
+                        <div class="settings__preview-card settings__preview-card--back">
+                            <img src="" alt="" class="settings__preview-image">
+                        </div>
+
+                        <div class="settings__preview-card settings__preview-card--front">
+                            <img src="" alt="" class="settings__preview-image">
+                        </div>
+                    </div>
+
+                    <div class="settings__summary">
+                        <div class="settings__summary-options">
+                            <span class="settings__summary-item">
+                                ${gameState.settings.themeId}
+                            </span>
+                            <span class="settings__summary-item">
+                                ${gameState.settings.startingPlayer}
+                            </span>
+                            <span class="settings__summary-item">
+                                ${gameState.settings.boardSize} cards
+                            </span>
+                        </div>
+
+                        <button id="start-btn" class="button settings__start-button">
+                            Start
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+`;
 
     addSettingsListeners(
         rootElement,
