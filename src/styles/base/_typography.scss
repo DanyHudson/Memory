@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 
 @font-face {
     font-family: 'RedRose';
@@ -27,3 +29,20 @@
     font-style: normal;
 }
 
+h1,
+h2,
+h3 {
+    font-family: $font-family-display;
+}
+
+h4,
+h5,
+h6,
+p,
+li,
+button,
+input,
+textarea,
+label {
+    font-family: $font-family-base;
+}
