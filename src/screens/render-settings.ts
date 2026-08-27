@@ -30,7 +30,7 @@ export function renderSettings({
                 <div class="settings__controls">
                     <fieldset class="settings__group">
                         <legend class="settings__group-title">
-                            <img src="" alt="" class="settings__group-icon">
+                            <img src="/src/assets/images/shared/icons/theme-palette-icon.svg" alt="" class="settings__group-icon">
                             Game themes
                         </legend>
 
@@ -61,7 +61,7 @@ export function renderSettings({
 
                     <fieldset class="settings__group">
                         <legend class="settings__group-title">
-                            <img src="" alt="" class="settings__group-icon">
+                            <img src="/src/assets/images/shared/icons/pawn-icon-mint.svg" alt="" class="settings__group-icon">
                             Choose player
                         </legend>
 
@@ -92,7 +92,7 @@ export function renderSettings({
 
                     <fieldset class="settings__group">
                         <legend class="settings__group-title">
-                            <img src="" alt="" class="settings__group-icon">
+                            <img src="/src/assets/images/shared/icons/board-size-icon.svg" alt="" class="settings__group-icon">
                             Board size
                         </legend>
 
@@ -149,10 +149,13 @@ export function renderSettings({
                         <div class="settings__summary-options">
                             <span class="settings__summary-item">
                                 ${gameState.settings.themeId}
+                              
                             </span>
+                            /
                             <span class="settings__summary-item">
                                 ${gameState.settings.startingPlayer}
                             </span>
+                            /
                             <span class="settings__summary-item">
                                 ${gameState.settings.boardSize} cards
                             </span>
