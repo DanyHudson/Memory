@@ -149,7 +149,7 @@ export function renderSettings({
                         </div> -->
 
                         <div class="settings__preview-card settings__preview-card--front">
-                            <img src="${theme.assets.visuals.default}" alt="" class="settings__preview-image">
+                            <img src="${theme.assets.visuals.default}" alt="${theme.label}" class="settings__preview-image">
                         </div>
                     </div>
 
