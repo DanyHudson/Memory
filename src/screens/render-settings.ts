@@ -1,3 +1,4 @@
+import { THEMES } from '../data/themes';
 import type { GameState, PlayerId } from '../types/game';
 import type { ThemeId } from '../types/theme';
 import type { BoardSizeId } from '../data/board-sizes';
@@ -19,6 +20,13 @@ export function renderSettings({
     onBoardSizeChange,
     onStart,
 }: RenderSettingsParams) {
+    const theme = THEMES.find((entry) => entry.id === gameState.settings.themeId);
+
+    if (!theme) {
+        rootElement.innerHTML = '<p>Game configuration is invalid.</p>';
+        return;
+    }
+
     rootElement.innerHTML = `
     <main class="settings">
         <section class="settings__screen">
@@ -136,12 +144,12 @@ export function renderSettings({
 
                 <aside class="settings__preview">
                     <div class="settings__preview-stage">
-                        <div class="settings__preview-card settings__preview-card--back">
+                       <!-- <div class="settings__preview-card settings__preview-card--back">
                             <img src="" alt="" class="settings__preview-image">
-                        </div>
+                        </div> -->
 
                         <div class="settings__preview-card settings__preview-card--front">
-                            <img src="" alt="" class="settings__preview-image">
+                            <img src="${theme.assets.visuals.default}" alt="" class="settings__preview-image">
                         </div>
                     </div>
 

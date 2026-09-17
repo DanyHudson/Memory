@@ -7,6 +7,9 @@ export type CardFace = {
 };
 
 export type ThemeAssets = {
+    visuals: {
+        default: string;
+    };
     exit: {
         default: string;
         hover: string;

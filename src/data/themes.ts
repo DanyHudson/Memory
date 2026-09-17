@@ -5,6 +5,12 @@ export const THEMES: Theme[] = [
         id: 'da-projects',
         label: 'DA projects theme',
         assets: {
+            visuals: {
+                default: new URL(
+                    '../assets/images/themes/da-projects/da-project-theme-visual.svg',
+                    import.meta.url,
+                ).href,
+            },
             exit: {
                 default: new URL(
                     '../assets/images/themes/da-projects/exit-icon-blue.svg',
@@ -181,6 +187,12 @@ export const THEMES: Theme[] = [
         id: 'foods',
         label: 'Foods theme',
         assets: {
+            visuals: {
+                default: new URL(
+                    '../assets/images/themes/foods/foods-theme-visual.svg',
+                    import.meta.url,
+                ).href,
+            },
             exit: {
                 default: new URL(
                     '../assets/images/themes/foods/exit-icon-orange.svg',
