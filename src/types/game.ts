@@ -10,8 +10,8 @@ export type ResultId = 'blue' | 'orange' | 'draw' | null;
 
 export type SettingsState = {
     themeId: ThemeId;
-    boardSize: BoardSizeId;
-    startingPlayer: PlayerId;
+    boardSize: BoardSizeId | null;
+    startingPlayer: PlayerId | null;
 };
 
 export type ScoreState = {
