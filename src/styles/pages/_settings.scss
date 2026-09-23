@@ -14,7 +14,34 @@
     }
 
     &__header {
+        // margin-bottom: clamp(2rem, 4vw, 3rem);
+        position: relative;
+        display: inline-block;
         margin-bottom: clamp(2rem, 4vw, 3rem);
+        padding: 0.9rem 0 1rem 0.9rem;
+
+    }
+
+    &__header::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0.1rem;
+        width: 0.8rem;
+        height: 0.8rem;
+        background: #f0ea6e;
+        transform: rotate(45deg);
+        transform-origin: center;
+    }
+
+    &__header::after {
+        content: '';
+        position: absolute;
+        left: 0.9rem;
+        right: -0.9rem;
+        bottom: 0.37rem;
+        height: 0.22rem;
+        background: #f0ea6e;
     }
 
     &__title {
@@ -67,6 +94,17 @@
         line-height: 1.4;
         cursor: pointer;
     }
+
+        &__option::after {
+        content: '';
+        position: absolute;
+        left: 0.9rem;
+        right: -0.9rem;
+        bottom: 0.37rem;
+        height: 0.22rem;
+        background: #f0ea6e;
+    }
+
 
     &__radio {
         inline-size: 1.1rem;
