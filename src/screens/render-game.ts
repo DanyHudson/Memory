@@ -1,6 +1,6 @@
 import { BOARD_SIZES } from '../data/board-sizes';
 import { THEMES } from '../data/themes';
-import type { GameState } from '../types/game';
+import type { GameState, PlayerId } from '../types/game';
 
 // type RenderGameParams = {
 //     rootElement: HTMLElement;
@@ -70,7 +70,7 @@ export function renderGame({
                         <span class="game-screen__turn-label">Current player:</span>
                         <img
                             class="game-screen__turn-icon"
-                            src="${theme.assets.playerPawns[gameState.currentPlayer]}"
+                            src="${theme.assets.playerPawns[gameState.currentPlayer as PlayerId]}"
                             alt="${gameState.currentPlayer} player"
                         >
                     </div>

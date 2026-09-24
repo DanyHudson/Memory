@@ -1,5 +1,5 @@
 import './styles/style.scss';
-import type { GameState, MemoryCard } from './types/game';
+import type { GameState, MemoryCard, PlayerId } from './types/game';
 import { INITIAL_GAME_STATE } from './state/initial-state';
 import { createGameStateFromSettings, getWinner, isGameFinished } from './state/game-logic';
 import { renderLanding } from './screens/render-landing';
@@ -198,7 +198,7 @@ function matchFlippedCards(firstCard: MemoryCard, secondCard: MemoryCard) {
     if (firstCard.faceId === secondCard.faceId) {
         firstCard.isMatched = true;
         secondCard.isMatched = true;
-        gameState.score[gameState.currentPlayer] += 1;
+        gameState.score[gameState.currentPlayer as PlayerId] += 1;
         return;
     }
     firstCard.isFlipped = false;

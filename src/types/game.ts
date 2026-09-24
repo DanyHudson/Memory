@@ -31,7 +31,7 @@ export type MemoryCard = {
 export type GameState = {
     screen: ScreenId;
     settings: SettingsState;
-    currentPlayer: PlayerId;
+    currentPlayer: PlayerId | null;
     score: ScoreState;
     deck: MemoryCard[];
     flippedCardIds: string[];

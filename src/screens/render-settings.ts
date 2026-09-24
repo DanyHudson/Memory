@@ -159,11 +159,11 @@ export function renderSettings({
                                 ${gameState.settings.themeId}
                               
                             </span>
-                            /
+                            <span class="settings__summary-item-devider">/</span>
                             <span class="settings__summary-item">
                                 ${gameState.settings.startingPlayer}
                             </span>
-                            /
+                            <span class="settings__summary-item-devider">/</span>
                             <span class="settings__summary-item">
                                 ${gameState.settings.boardSize} cards
                             </span>

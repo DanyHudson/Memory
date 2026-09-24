@@ -14,12 +14,10 @@
     }
 
     &__header {
-        // margin-bottom: clamp(2rem, 4vw, 3rem);
         position: relative;
         display: inline-block;
         margin-bottom: clamp(2rem, 4vw, 3rem);
         padding: 0.9rem 0 1rem 0.9rem;
-
     }
 
     &__header::before {
@@ -29,7 +27,6 @@
         bottom: 0.1rem;
         width: 0.8rem;
         height: 0.8rem;
-        // background: #f0ea6e;
         background: $color-yellow;
         transform: rotate(45deg);
         transform-origin: center;
@@ -139,8 +136,6 @@
 
     &__preview-stage {
         position: relative;
-        // inline-size: min(100%, 21rem);
-        // aspect-ratio: 1 / 1;
         margin-inline: auto;
         border-radius: 1rem;
         background: #bfe8f7;
@@ -151,8 +146,6 @@
 
     &__preview-card {
         position: absolute;
-        // inline-size: 44%;
-        // aspect-ratio: 1 / 1;
         width: 100%;
         height: 100%;
         border-radius: 1.1rem;
@@ -178,7 +171,6 @@
         gap: 1rem;
         padding: 0.9rem 1rem;
         background: rgba(0, 0, 0, 0.06);
-        // border: 1px solid rgba(0, 0, 0, 0.06);
         border-radius: 0.2rem;
     }
 
@@ -194,14 +186,26 @@
         color: #3e403f;
     }
 
-    &__start {
+    // &__start {
+    //     flex: 0 0 auto;
+    //     min-inline-size: 8rem;
+    //     justify-content: center;
+    //     background: $color-yellow;
+    //     border-color: $color-yellow;
+    //     color: #272927;
+    // }
+
+    &__start-button {
         flex: 0 0 auto;
         min-inline-size: 8rem;
         justify-content: center;
-        background: #efe45a;
-        border-color: #efe45a;
+        background: $color-yellow;
+        border-color: $color-yellow;
         color: #272927;
+        border-radius: 0.2rem;
     }
+
+    
 }
 
 @media (max-width: $bp-tablet) {
