@@ -29,7 +29,8 @@
         bottom: 0.1rem;
         width: 0.8rem;
         height: 0.8rem;
-        background: #f0ea6e;
+        // background: #f0ea6e;
+        background: $color-yellow;
         transform: rotate(45deg);
         transform-origin: center;
     }
@@ -41,7 +42,7 @@
         right: -0.9rem;
         bottom: 0.37rem;
         height: 0.22rem;
-        background: #f0ea6e;
+        background: $color-yellow;
     }
 
     &__title {
@@ -93,18 +94,35 @@
         font-size: 1.1rem;
         line-height: 1.4;
         cursor: pointer;
+        position: relative;
+    }
+   
+    &__option-label {
+        position: relative;
+        display: inline-block;
     }
 
-        &__option::after {
+    &__option:hover &__option-label::after {
         content: '';
         position: absolute;
-        left: 0.9rem;
-        right: -0.9rem;
-        bottom: 0.37rem;
-        height: 0.22rem;
-        background: #f0ea6e;
+        left: calc(100% + 0.75rem);
+        top: 50%;
+        width: 2rem;
+        height: 0.16rem;
+        background: $color-yellow;
+        transform: translateY(-50%);
     }
 
+    &__option:hover &__option-label::before {
+        content: '';
+        position: absolute;
+        left: calc(100% + 2.75rem);
+        top: 50%;
+        width: 0.6rem;
+        height: 0.6rem;
+        background: $color-yellow;
+        transform: translateY(-50%) rotate(45deg);
+    }
 
     &__radio {
         inline-size: 1.1rem;
