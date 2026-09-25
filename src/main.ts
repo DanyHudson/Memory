@@ -11,6 +11,7 @@ import { renderResult } from './screens/render-result';
 let gameState: GameState = structuredClone(INITIAL_GAME_STATE);
 let isResolvingTurn = false;
 let isExitDialogOpen = false;
+let showSettingsValidation = false;
 const root = document.getElementById('root');
 
 if (!root) {
@@ -40,6 +41,17 @@ function render(rootElement: HTMLElement) {
 function renderLandingScreen(rootElement: HTMLElement) {
     renderLanding(rootElement, () => openSettings(rootElement));
 }
+
+// function renderSettingsScreen(rootElement: HTMLElement) {
+//     renderSettings({
+//         rootElement,
+//         gameState,
+//         onThemeChange: (themeId) => updateTheme(rootElement, themeId),
+//         onPlayerChange: (playerId) => updateStartingPlayer(rootElement, playerId),
+//         onBoardSizeChange: (boardSizeId) => updateBoardSize(rootElement, boardSizeId),
+//         onStart: () => startGame(rootElement),
+//     });
+// }
 
 function renderSettingsScreen(rootElement: HTMLElement) {
     renderSettings({
@@ -88,28 +100,69 @@ function updateTheme(
     render(rootElement);
 }
 
+// function updateStartingPlayer(
+//     rootElement: HTMLElement,
+//     playerId: GameState['settings']['startingPlayer'],
+// ) {
+//     gameState.settings.startingPlayer = playerId;
+//     render(rootElement);
+// }
+
 function updateStartingPlayer(
     rootElement: HTMLElement,
     playerId: GameState['settings']['startingPlayer'],
 ) {
     gameState.settings.startingPlayer = playerId;
+    showSettingsValidation = false;
     render(rootElement);
 }
+
+// function updateBoardSize(
+//     rootElement: HTMLElement,
+//     boardSizeId: GameState['settings']['boardSize'],
+// ) {
+//     gameState.settings.boardSize = boardSizeId;
+//     render(rootElement);
+// }
 
 function updateBoardSize(
     rootElement: HTMLElement,
     boardSizeId: GameState['settings']['boardSize'],
 ) {
     gameState.settings.boardSize = boardSizeId;
+    showSettingsValidation = false;
     render(rootElement);
 }
 
+// function openSettings(rootElement: HTMLElement) {
+//     gameState.screen = 'settings';
+//     render(rootElement);
+// }
+
 function openSettings(rootElement: HTMLElement) {
+    showSettingsValidation = false;
     gameState.screen = 'settings';
     render(rootElement);
 }
 
+// function startGame(rootElement: HTMLElement) {
+//     gameState = createGameStateFromSettings(gameState);
+//     gameState.screen = 'game';
+//     render(rootElement);
+// }
+
 function startGame(rootElement: HTMLElement) {
+    const hasRequiredSettings =
+        gameState.settings.startingPlayer !== null &&
+        gameState.settings.boardSize !== null;
+
+    if (!hasRequiredSettings) {
+        showSettingsValidation = true;
+        render(rootElement);
+        return;
+    }
+
+    showSettingsValidation = false;
     gameState = createGameStateFromSettings(gameState);
     gameState.screen = 'game';
     render(rootElement);

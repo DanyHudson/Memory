@@ -21,6 +21,9 @@ export function renderSettings({
     onStart,
 }: RenderSettingsParams) {
     const theme = THEMES.find((entry) => entry.id === gameState.settings.themeId);
+    const isStartReady =
+        gameState.settings.startingPlayer !== null &&
+        gameState.settings.boardSize !== null;
 
     if (!theme) {
         rootElement.innerHTML = '<p>Game configuration is invalid.</p>';
@@ -169,10 +172,21 @@ export function renderSettings({
                             </span>
                         </div>
 
-                        <button id="start-btn" class="button settings__start-button">
+                        s<div class="settings__start">
+                            <button
+                                id="start-btn"
+                                class="button settings__start-button${!isStartReady ? ' settings__start-button--pending' : ''}"
+                                type="button"
+                            >
                             Start
-                        </button>
+                            </button>
+                        </div>
+
+
                     </div>
+
+
+
                 </aside>
             </div>
         </section>
