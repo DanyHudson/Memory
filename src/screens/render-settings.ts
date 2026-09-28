@@ -24,6 +24,16 @@ export function renderSettings({
     const isStartReady =
         gameState.settings.startingPlayer !== null &&
         gameState.settings.boardSize !== null;
+    const playerSummary =
+        gameState.settings.startingPlayer === null
+            ? 'Pick a player'
+            : gameState.settings.startingPlayer;
+
+    const boardSizeSummary =
+        gameState.settings.boardSize === null
+            ? 'Pick a board size'
+            : `${gameState.settings.boardSize} cards`;
+
 
     if (!theme) {
         rootElement.innerHTML = '<p>Game configuration is invalid.</p>';
@@ -158,21 +168,34 @@ export function renderSettings({
 
                     <div class="settings__summary">
                         <div class="settings__summary-options">
-                            <span class="settings__summary-item">
-                                ${gameState.settings.themeId}
-                              
+                           <span class="settings__summary-item">
+                                ${gameState.settings.themeId}                       
                             </span>
-                            <span class="settings__summary-item-devider">/</span>
-                            <span class="settings__summary-item">
+                                              
+                            <span class="settings__summary-item-divider"></span>
+
+                            <!-- <span class="settings__summary-item">
                                 ${gameState.settings.startingPlayer}
-                            </span>
-                            <span class="settings__summary-item-devider">/</span>
+                            </span> -->
+
                             <span class="settings__summary-item">
-                                ${gameState.settings.boardSize} cards
+                                ${playerSummary}
                             </span>
+
+                            <span class="settings__summary-item-divider"></span>
+
+
+                            <!-- <span class="settings__summary-item">
+                                ${gameState.settings.boardSize} cards
+                            </span> -->
+
+                            <span class="settings__summary-item">
+                            ${boardSizeSummary}
+                            </span>
+
                         </div>
 
-                        s<div class="settings__start">
+                        <div class="settings__start">
                             <button
                                 id="start-btn"
                                 class="button settings__start-button${!isStartReady ? ' settings__start-button--pending' : ''}"
@@ -182,10 +205,7 @@ export function renderSettings({
                             </button>
                         </div>
 
-
                     </div>
-
-
 
                 </aside>
             </div>

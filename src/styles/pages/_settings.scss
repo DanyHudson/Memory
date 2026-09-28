@@ -93,7 +93,7 @@
         cursor: pointer;
         position: relative;
     }
-   
+
     &__option-label {
         position: relative;
         display: inline-block;
@@ -181,9 +181,28 @@
         flex-wrap: wrap;
     }
 
+    &__summary-options {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+    }
+
     &__summary-item {
         font-size: 1rem;
         color: #3e403f;
+        white-space: nowrap;
+    }
+
+
+    &__summary-item-divider {
+        display: inline-block;
+        width: 0.35rem;
+        height: 3.25rem;
+        background: $color-yellow;
+        border-radius: 999px;
+        transform: rotate(18deg);
+        flex-shrink: 0;
     }
 
     // &__start {
@@ -195,6 +214,8 @@
     //     color: #272927;
     // }
 
+
+
     &__start-button {
         flex: 0 0 auto;
         min-inline-size: 8rem;
@@ -205,7 +226,22 @@
         border-radius: 0.2rem;
     }
 
-    
+    // &__summary-item-devider {
+    //     display: inline-block;
+    //     width: 0.025rem;
+    //     height: 0.1rem;
+    //     // transform: translateY(-50%) rotate(45deg);
+    //     transform: rotate(-58deg);
+    //     // background: $color-yellow;
+    //     background: blue;
+    //     // border: 1px solid $color-yellow;
+    //     // border-left: 1px solid blue;
+    //     padding-left: 0.4rem;
+    //     padding-right: 0.4rem;
+    //     // margin-inline: 0.2rem;
+    // }
+
+
 }
 
 @media (max-width: $bp-tablet) {
