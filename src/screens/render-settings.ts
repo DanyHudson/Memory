@@ -24,6 +24,7 @@ export function renderSettings({
     const isStartReady =
         gameState.settings.startingPlayer !== null &&
         gameState.settings.boardSize !== null;
+    const themeSummary = theme?.label ?? 'Pick a theme';
     const playerSummary =
         gameState.settings.startingPlayer === null
             ? 'Pick a player'
@@ -54,30 +55,7 @@ export function renderSettings({
                             <img src="/src/assets/images/shared/icons/theme-palette-icon.svg" alt="" class="settings__group-icon">
                             Game themes
                         </legend>
-
-                        <label class="settings__option settings__option--theme" for="da-projects-theme">
-                            <input
-                                class="settings__radio"
-                                type="radio"
-                                id="da-projects-theme"
-                                name="game-theme"
-                                value="da-projects"
-                                ${gameState.settings.themeId === 'da-projects' ? 'checked' : ''}
-                            >
-                            <span class="settings__option-label">DA Projects theme</span>
-                        </label>
-
-                        <label class="settings__option settings__option--theme" for="foods-theme">
-                            <input
-                                class="settings__radio"
-                                type="radio"
-                                id="foods-theme"
-                                name="game-theme"
-                                value="foods"
-                                ${gameState.settings.themeId === 'foods' ? 'checked' : ''}
-                            >
-                            <span class="settings__option-label">Foods theme</span>
-                        </label>
+                        ${renderThemeOptions(gameState.settings.themeId)}
                     </fieldset>
 
                     <fieldset class="settings__group">
@@ -162,14 +140,14 @@ export function renderSettings({
                         </div> -->
 
                         <div class="settings__preview-card settings__preview-card--front">
-                            <img src="${theme.assets.visuals.default}" alt="${theme.label}" class="settings__preview-image">
+                            <img id="theme-preview-image" src="${theme.assets.visuals.default}" alt="${theme.label}" class="settings__preview-image">
                         </div>
                     </div>
 
                     <div class="settings__summary">
                         <div class="settings__summary-options">
                            <span class="settings__summary-item">
-                                ${gameState.settings.themeId}                       
+                                ${themeSummary}
                             </span>
                                               
                             <span class="settings__summary-item-divider"></span>
@@ -223,6 +201,20 @@ export function renderSettings({
     addStartButtonListener(rootElement, onStart);
 }
 
+function renderThemeOptions(selectedThemeId: ThemeId) {
+    return THEMES.map((themeOption) => renderThemeOption(themeOption.id, themeOption.label, selectedThemeId))
+        .join('');
+}
+
+function renderThemeOption(themeId: ThemeId, label: string, selectedThemeId: ThemeId) {
+    const inputId = `${themeId}-theme`;
+    const checked = selectedThemeId === themeId ? 'checked' : '';
+    return `<label class="settings__option settings__option--theme" for="${inputId}" data-theme-id="${themeId}">
+                            <input class="settings__radio" type="radio" id="${inputId}" name="game-theme" value="${themeId}" ${checked}>
+                            <span class="settings__option-label">${label}</span>
+                        </label>`;
+}
+
 function addSettingsListeners(
     rootElement: HTMLElement,
     onThemeChange: (themeId: ThemeId) => void,
@@ -230,26 +222,71 @@ function addSettingsListeners(
     onBoardSizeChange: (boardSizeId: BoardSizeId) => void,
 ) {
     const themeOptions = rootElement.querySelectorAll<HTMLInputElement>('input[name="game-theme"]');
-    const playerOptions = rootElement.querySelectorAll<HTMLInputElement>('input[name="player"]');
-    const boardSizeOptions = rootElement.querySelectorAll<HTMLInputElement>('input[name="board-size"]');
+    const themeLabels = rootElement.querySelectorAll<HTMLLabelElement>('.settings__option--theme');
+    const previewImage = rootElement.querySelector<HTMLImageElement>('#theme-preview-image');
 
+    bindThemeSelection(themeOptions, previewImage, onThemeChange);
+    bindThemeHoverPreview(themeLabels, themeOptions, previewImage);
+    bindPlayerSelection(rootElement, onPlayerChange);
+    bindBoardSizeSelection(rootElement, onBoardSizeChange);
+}
+
+function bindThemeSelection(
+    themeOptions: NodeListOf<HTMLInputElement>,
+    previewImage: HTMLImageElement | null,
+    onThemeChange: (themeId: ThemeId) => void,
+) {
     themeOptions.forEach((option) => {
-        option.addEventListener('change', () => {
-            onThemeChange(option.value as ThemeId);
-        });
+        option.addEventListener('change', () => onThemeChange(option.value as ThemeId));
+        option.addEventListener('focus', () => setThemePreview(option.value as ThemeId, previewImage));
+        option.addEventListener('blur', () => resetThemePreview(themeOptions, previewImage));
     });
+}
 
-    playerOptions.forEach((option) => {
-        option.addEventListener('change', () => {
-            onPlayerChange(option.value as PlayerId);
-        });
+function bindThemeHoverPreview(
+    themeLabels: NodeListOf<HTMLLabelElement>,
+    themeOptions: NodeListOf<HTMLInputElement>,
+    previewImage: HTMLImageElement | null,
+) {
+    themeLabels.forEach((label) => {
+        const themeId = label.dataset.themeId as ThemeId | undefined;
+        if (!themeId) return;
+        label.addEventListener('mouseenter', () => setThemePreview(themeId, previewImage));
+        label.addEventListener('mouseleave', () => resetThemePreview(themeOptions, previewImage));
     });
+}
 
-    boardSizeOptions.forEach((option) => {
-        option.addEventListener('change', () => {
-            onBoardSizeChange(Number(option.value) as BoardSizeId);
-        });
+function bindPlayerSelection(
+    rootElement: HTMLElement,
+    onPlayerChange: (playerId: PlayerId) => void,
+) {
+    rootElement.querySelectorAll<HTMLInputElement>('input[name="player"]').forEach((option) => {
+        option.addEventListener('change', () => onPlayerChange(option.value as PlayerId));
     });
+}
+
+function bindBoardSizeSelection(
+    rootElement: HTMLElement,
+    onBoardSizeChange: (boardSizeId: BoardSizeId) => void,
+) {
+    rootElement.querySelectorAll<HTMLInputElement>('input[name="board-size"]').forEach((option) => {
+        option.addEventListener('change', () => onBoardSizeChange(Number(option.value) as BoardSizeId));
+    });
+}
+
+function setThemePreview(themeId: ThemeId, previewImage: HTMLImageElement | null) {
+    const theme = THEMES.find((entry) => entry.id === themeId);
+    if (!theme || !previewImage) return;
+    previewImage.src = theme.assets.visuals.default;
+    previewImage.alt = theme.label;
+}
+
+function resetThemePreview(
+    themeOptions: NodeListOf<HTMLInputElement>,
+    previewImage: HTMLImageElement | null,
+) {
+    const selectedTheme = Array.from(themeOptions).find((option) => option.checked);
+    if (selectedTheme) setThemePreview(selectedTheme.value as ThemeId, previewImage);
 }
 
 function addStartButtonListener(
