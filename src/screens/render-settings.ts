@@ -179,6 +179,7 @@ export function renderSettings({
                                 class="button settings__start-button${!isStartReady ? ' settings__start-button--pending' : ''}"
                                 type="button"
                             >
+                                <img src="/src/assets/images/shared/icons/play-icon.svg" alt="Play Icon" class="button__icon">
                             Start
                             </button>
                         </div>

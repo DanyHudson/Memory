@@ -174,6 +174,12 @@
         border-radius: 0.2rem;
     }
 
+    &__summary:hover {
+        transform: scaleX(1.05);
+    }
+
+
+
     &__summary-list {
         display: flex;
         align-items: center;
