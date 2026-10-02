@@ -59,6 +59,7 @@
     &__controls {
         display: grid;
         gap: 2.75rem;
+        height: 100%;
     }
 
     &__group {
@@ -132,17 +133,17 @@
         // display: grid;
         gap: 2rem;
         // align-items: start;
-        width: 80%;
-        max-width: 32rem;
+        width: 100%;
+        max-width: 40rem;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
         flex-direction: column;
     }
 
     &__preview-stage {
         position: relative;
-        margin-inline: auto;
+        // margin-inline: auto;
         border-radius: 1rem;
         background: #bfe8f7;
         overflow: hidden;
@@ -154,7 +155,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        border-radius: 1.1rem;
+        // border-radius: 1.1rem;
         box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.16);
 
         &--primary {

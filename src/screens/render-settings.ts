@@ -135,13 +135,9 @@ export function renderSettings({
 
                 <aside class="settings__preview">
                     <div class="settings__preview-stage">
-                       <!-- <div class="settings__preview-card settings__preview-card--back">
-                            <img src="" alt="" class="settings__preview-image">
-                        </div> -->
-
-                        <div class="settings__preview-card settings__preview-card--front">
+                        <!--<div class="settings__preview-card settings__preview-card--front"> -->
                             <img id="theme-preview-image" src="${theme.assets.visuals.default}" alt="${theme.label}" class="settings__preview-image">
-                        </div>
+                        <!-- </div> -->
                     </div>
 
                     <div class="settings__summary">
@@ -179,7 +175,7 @@ export function renderSettings({
                                 class="button settings__start-button${!isStartReady ? ' settings__start-button--pending' : ''}"
                                 type="button"
                             >
-                                <img src="/src/assets/images/shared/icons/play-icon.svg" alt="Play Icon" class="button__icon">
+                                <img src="/src/assets/images/shared/icons/ " alt="Play Icon" class="button__icon">
                             Start
                             </button>
                         </div>
